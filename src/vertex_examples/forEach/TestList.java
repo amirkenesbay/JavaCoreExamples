@@ -14,6 +14,8 @@ public class TestList {
         System.out.println("\nLambda forEach: ");
         numbers.forEach(number -> System.out.print(number + " "));
 
+        numbers.forEach(System.out::println);
+
         System.out.println("\nSimple forEach: ");
         for (Integer number : numbers) {
             if (number > 2) {
