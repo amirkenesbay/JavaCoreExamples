@@ -28,6 +28,23 @@ public class Test5 {
 
 //        students = students.stream().sorted((x,y)->x.getName().compareTo(y.getName())).collect(Collectors.toList());
         students = students.stream().sorted(Comparator.comparing(Student::getName)).collect(Collectors.toList());
-        System.out.println(students);
+
+        int result = Arrays.stream(arr).filter(e -> e % 2 == 1)
+                .map(e -> {
+                    if (e % 3 == 0) {
+                        e = e / 3;
+                    }
+                    return e;
+                })
+                .reduce((a, e) -> a + e).getAsInt();
+
+        students.stream().map(element->
+        {
+            element.setName(element.getName().toUpperCase());
+            return element;
+        })
+                .filter(element -> element.getSex() == 'f')
+                .sorted((x,y) -> x.getAge() - y.getAge())
+                .forEach(System.out::println);
     }
 }
