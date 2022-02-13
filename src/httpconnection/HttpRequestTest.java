@@ -32,6 +32,7 @@ public class HttpRequestTest {
                 String line;
                 while ((line = bfR.readLine()) != null) {
 //                    line = URLEncoder.encode(line, StandardCharsets.UTF_8);
+
                     System.out.println(line);
                 }
             } else {
