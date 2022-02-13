@@ -6,15 +6,18 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 public class HttpRequestTest {
     public static void main(String[] args) {
-        String urlAddress = "https://query1.finance.yahoo.com/v7/finance/download/%5ERUT?period1=1644192000&period2=1644278400&interval=1d&events=history&includeAdjustedClose=true";
+        String urlAddress = "https://ru.wikipedia.org/w/api.php?action=query&list=search&utf8=&format=json&srsearch=\"Java\"";
         HttpURLConnection connection = null;
 
         URL url = null;
         InputStreamReader isR = null;
         BufferedReader bfR = null;
+        URLEncoder urlEncoder = null;
         try {
             url = new URL(urlAddress);
             connection = (HttpURLConnection) url.openConnection();
@@ -28,6 +31,7 @@ public class HttpRequestTest {
                 bfR = new BufferedReader(isR);
                 String line;
                 while ((line = bfR.readLine()) != null) {
+//                    line = URLEncoder.encode(line, StandardCharsets.UTF_8);
                     System.out.println(line);
                 }
             } else {
